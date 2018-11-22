@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('Admin','AdminController');
+Route::get('Admin/create',['uses'=>'AdminController@create','as'=>'Admin.create']);
+Route::post('Admin/store',['uses'=>'AdminController@store','as'=>'Admin.store']);
+Route::delete('Admin/{id}',['uses'=>'AdminController@destroy','as'=>'Admin.delete']);
