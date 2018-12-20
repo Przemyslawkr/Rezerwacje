@@ -33,7 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li><a href="{{url('/Admin')}}">Admin</a></li>
+                        <li><a class="nav-link" href="{{url('/Info')}}">Omnie</a></li>
+                        <li><a class="nav-link" href="{{url('/Contact')}}">Kontakt</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rezerwacje <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{{ url('/Rezerwacja') }}">Dodaj rezerwacje</a></li>
+                              <li><a class="dropdown-item" href="{{ url('/Widok') }}">Wyświetl rezerwacje</a></li>
+
+                            </ul>
+                          </li>
+                        <li><a class="nav-link" href="{{url('/Admin')}}">Admin</a></li>
+                       
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -41,11 +52,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Logowanie</a>
                             </li>
                             <li class="nav-item">
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Rejestracja</a>
                                 @endif
                             </li>
                            

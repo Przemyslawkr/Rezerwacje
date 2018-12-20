@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
-    <a class="btn btn-primary" href="{{route('Admin.create')}}">Dodaj Przedmiot</a>
+    <div class='form-row'>
+    <div class="row justify-content-center col-md-8">
    
     <table class="table table-hover">
       <tr>
@@ -27,6 +27,13 @@
         </table>
         {{$przedmioty->links() }}
      </div>
+    <div class="col-md-2">
+    </div>
+    <div class='justify-content-center col-md-2'>
+    <a class="btn btn-primary" href="{{route('Admin.create')}}">Dodaj Przedmiot</a>
+    <a class="btn btn-success" href="{{url('/Confirm')}}" >Potwierdź rezerwacje</a>
+    </div>
+    </div>
 </div>
 
 @endsection
