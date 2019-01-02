@@ -29,3 +29,5 @@ Route::resource('Widok','ViewController');
 Route::post('Rezerwacja/store',['uses'=>'ItemController@store','as'=>'Rezerwacja.store']);
 Route::resource('Confirm','ConfirmController');
 Route::delete('Confirm/{id}',['uses'=>'ConfirmController@destroy','as'=>'Confirm.delete']);
+Route::resource('Save','SaveController');
+Route::delete('Save/{id}',['uses'=>'SaveController@destroy','as'=>'Save.delete']);

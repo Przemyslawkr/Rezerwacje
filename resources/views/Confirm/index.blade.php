@@ -28,8 +28,7 @@
          <td>{{ $i -> id_object }}</td>
          <td>{{ $i -> Date_from }}</td>
          <td>{{ $i -> Date_to }} </td>
-         <td>{!! Form::open(array('route'=>['Confirm.edit',$i->id],'method'=>'POST')) !!}
-                     
+         <td>{!! Form::open(array('route'=>['Save.delete',$i->id],'method'=>'DELETE')) !!}                     
             {!! Form::button('Potwierdź',['class'=>'btn btn-success','type'=>'submit']) !!}
              {!! Form::close() !!}</td>
          <td> {!! Form::open(array('route'=>['Confirm.destroy',$i->id],'method'=>'DELETE')) !!}

@@ -42,9 +42,20 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ItemRequest $request)
-    {
+    {   $pozwolenie=false;
+        $rez= \App\Rezerwacjes::all();
+        foreach ($rez as $r) {
+            if($r['id_object']==$request['id_object'])
+                if(($r['Date_from']<=$request['Date_from'])&&($r['Date_to']>=$request['Date_from']))
+                {   return redirect()->route('Rezerwacja.index')->with('error','Wybierz inny termin');    
+                }
+                else
+                {
+                if(($r['Date_from']<=$request['Date_to'])&&($r['Date_to']>=$request['Date_to']))
+                    return redirect()->route('Rezerwacja.index')->with('error','Wybierz inny termin');    
+        }}
         \App\Rezerwacjes::create($request->all());
-        return redirect()->route('Rezerwacja.index')->with('success','Poczekaj na kontakt z administratorem');
+        return redirect()->route('Rezerwacja.index')->with('success','Poczekaj na Akceptacje przez administratora');
     }
 
     /**

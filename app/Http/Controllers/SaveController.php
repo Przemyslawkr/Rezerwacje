@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ConfirmController extends Controller
+class SaveController extends Controller
 {
-   public function __construct()
+    public function __construct()
     {
         $this->middleware('admin');
     }
@@ -18,8 +19,7 @@ class ConfirmController extends Controller
      */
     public function index()
     {
-        $items = DB::select('select * from rezerwacjes where Confirmed = :id', ['id' => "Nie"]);
-        return view('confirm.index', compact('items'));
+        //
     }
 
     /**
@@ -29,7 +29,7 @@ class ConfirmController extends Controller
      */
     public function create()
     {
-      //
+        //
     }
 
     /**
@@ -38,9 +38,9 @@ class ConfirmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminRequest $request)
+    public function store(Request $request)
     {
-     
+        //
     }
 
     /**
@@ -60,23 +60,21 @@ class ConfirmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $id)
+    public function edit($id)
     {
-        DB::table('rezerwacjes')->where('id',$id)->update(['Confirmed' => 'Tak']);
-       return view('Confirm.index');   
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request\AdminRequest  $request
-     * @param  \App\Przedmiots $przedmiot
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminRequest $request, \App\Przedmiots $przedmiot)
+    public function update(Request $request, $id)
     {
-       
+        //
     }
 
     /**
@@ -85,10 +83,11 @@ class ConfirmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        
-        \App\Rezerwacjes::destroy($id);
-        return redirect()->route('Confirm.index');
+       DB::table('rezerwacjes')->where('id',$id)->update(['Confirmed' => 'Tak']);
+       return redirect()->route('Confirm.index')->with('success','Potwierdzono rezerwacje');
+   
+       
     }
 }
